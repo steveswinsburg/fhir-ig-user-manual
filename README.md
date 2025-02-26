@@ -97,6 +97,7 @@ Your IG project will have the following key folders:
 - `input/examples/` – Example instances of your FHIR resources.
 - `fsh-generated/` – Auto-generated FHIR resources from FSH definitions (if using SUSHI).
 - `output/` – Generated website and resources after running the IG Publisher.
+- `ig.xml` (if applicable) – XML-based configuration for defining resource references.
 
 ## 5. Creating and Adding New Profiles
 Profiles allow you to customise FHIR resources to meet specific requirements.
@@ -132,7 +133,7 @@ Then, compile it into JSON using SUSHI:
 sushi .
 ```
 
-## 6. Creating and Adding Custom DataTypes
+## Creating and Adding Custom DataTypes
 FHIR allows the creation of custom datatypes to support specialised use cases.
 
 ### a) Defining a Custom DataType
@@ -150,6 +151,18 @@ Create a `StructureDefinition` JSON file for your datatype in `input/resources/`
 }
 ```
 
+If using manual XML, the datatype needs to be wired up in `ig.xml`:
+```xml
+<resource>
+    <example>false</example>
+    <reference>
+        <reference value="StructureDefinition/MyCustomDatatype"/>
+    </reference>
+    <name value="My Custom Datatype"/>
+    <description value="A specialised datatype for my IG."/>
+</resource>
+```
+
 ### b) Using FHIR Shorthand (FSH) for DataTypes
 Define your datatype in `input/fsh/`:
 ```fsh
@@ -160,7 +173,7 @@ Title: "My Custom Datatype"
 Description: "A specialized datatype for my IG."
 ```
 
-## 7. Creating and Adding Extensions
+## Creating and Adding Extensions
 Extensions allow adding custom fields to standard FHIR resources.
 
 ### a) Defining an Extension in JSON
@@ -178,6 +191,18 @@ Create a JSON file in `input/resources/`:
 }
 ```
 
+If using manual XML, manually add the reference for the extension to `ig.xml`:
+```xml
+<resource>
+    <example>false</example>
+    <reference>
+        <reference value="StructureDefinition/MyExtension"/>
+    </reference>
+    <name value="My Custom Extension"/>
+    <description value="An example extension for adding extra fields."/>
+</resource>
+```
+
 ### b) Using FHIR Shorthand (FSH) for Extensions
 Define your extension in `input/fsh/`:
 ```fsh
@@ -188,7 +213,7 @@ Description: "An example extension for adding extra fields."
 * value[x] only string
 ```
 
-## 8. Adding Custom Pages
+## Adding Custom Pages
 To add documentation pages:
 
 1. Create a new `.md` file in `input/pagecontent/`, e.g., `mypage.md`.
@@ -204,7 +229,23 @@ pages:
   mypage.md: mypage.html
 ```
 
-## 9. Linking Between Pages
+## Examples
+
+Create the example file in `input/examples/` that contains the content you need.
+
+If using manual XML, the example needs to be wired up in `ig.xml`:
+```xml
+<resource>
+    <example>true</example>
+    <reference>
+        <reference value="Patient/mypatientexample"/>
+    </reference>
+    <name value="Example Patient"/>
+    <description value="An example patient using MyPatientProfile."/>
+</resource>
+```
+
+##  Linking Between Pages
 To create links between pages in your IG:
 
 - Use standard Markdown linking syntax:
@@ -237,9 +278,3 @@ Once validated, publish your IG to a GitHub repository and use [FHIR Build Infra
 - Explore the [FHIR IG Publisher Documentation](https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation).
 - Join the [FHIR Zulip Chat](https://chat.fhir.org/) for community support.
 - Validate profiles using the [FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator).
-
----
-This guide provides a foundation for building a FHIR IG. Feel free to expand with additional customizations as needed.
-
-
-

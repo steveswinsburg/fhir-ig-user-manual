@@ -35,6 +35,7 @@ npm install -g fsh-sushi
 
 ### c) Install Ruby and jekyll (Optional, only if manually publishing)
 Manual XML and JSON is built using jekyll, which is a Ruby gem.
+Read up on the jekyll install here: https://jekyllrb.com/docs/installation
 
 #### MacOS:
 

@@ -38,7 +38,8 @@ Manual XML and JSON is built using jekyll, which is a Ruby gem.
 
 #### MacOS:
 
-*Install Ruby*
+**Install Ruby**
+
 Install a separate version of Ruby using Homebrew. The version of Ruby that comes with MacOS is not designed for extension.
 you can use a different package manager if you prefer, the steps are roughly the same.
 
@@ -62,14 +63,16 @@ This may add it to .zprofile, move it to .zshrc if you want.
 
 Reopen terminal so the changes take effect.
 
-*Install jekyll*
+**Install jekyll**
+
 ```
 gem install jekyll
 ```
 
 #### Windows:
 
-*Install Ruby*
+**Install Ruby**
+
 Download the latest stable version (x64) from https://rubyinstaller.org/downloads/
 Run the installer and ensure the devkit is installed also.
 
@@ -78,7 +81,8 @@ Verify:
 ruby -v
 ```
 
-*Install Jekyll*
+**Install Jekyll**
+
 ```
 gem install jekyll
 ```

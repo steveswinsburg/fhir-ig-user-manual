@@ -12,7 +12,7 @@ Before you begin, ensure you have the following installed:
 - **Ruby and jekyll** (optional) – Required if publishing the IG manually through raw XML and JSON.
 - **Homebrew** (optional) - For MacOS only and only if publishing via jekyll. You can also use a different package manager if you prefer.
 - **Node.js & npm** (optional) – Required if using SUSHI for defining the IG.
-- **FHIR IG Publisher** – Used to build and validate the IG.
+- **FHIR IG Publisher** – Used to build and validate the IG. There is a script to manage this.
 - **FHIR Toolkit** (optional) – For additional validation and testing.
 
 ## 3. Setting Up Your IG Project
@@ -217,6 +217,13 @@ To create links between pages in your IG:
 ```
 
 ## 10. Building and Validating Your IG
+
+The first time you build you will need to ensure the publisher is in the local cache. The simplest way to do this is to use the updatePublisher script.
+```sh
+./_updatePublisher.sh   # Linux/macOS
+__updatePublisher.bat    # Windows
+```
+
 Run the FHIR IG Publisher to generate the IG website and validate your profiles:
 ```sh
 ./_genonce.sh   # Linux/macOS
